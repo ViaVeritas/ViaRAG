@@ -1,4 +1,11 @@
+"""
+Pydantic models for ViaRAG SDK API requests and responses.
 
+- QueryInput: For sending queries to the API.
+- ChunkInput: For splitting text into chunks.
+- UploadResult: For upload responses.
+- Used by ViaRAGClient methods.
+"""
 from pydantic import BaseModel
 from typing import Optional, List
 

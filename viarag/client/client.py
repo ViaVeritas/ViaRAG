@@ -1,4 +1,11 @@
+"""
+ViaRAGClient: Main entry point for using the ViaRAG SDK.
 
+- Initialize ViaRAGClient with your base_url and api_key.
+- Use query(), direct_query(), match_context() for RAG operations.
+- Use upload_files() to add documents, chunk_text() to split text, health() to check service.
+- Start here for most SDK tasks.
+"""
 from typing import Optional, List
 from viarag.core.http import ViaRAGHTTPClient
 from viarag.core.models import QueryInput, ChunkInput

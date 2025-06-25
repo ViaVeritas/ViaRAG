@@ -1,4 +1,10 @@
+"""
+Configuration loader for ViaRAG SDK.
 
+- Loads config from ~/.viarag/config.toml or environment variables.
+- Use load_config() to get API base URL and key.
+- Typically, you do not need to edit this file directly.
+"""
 from pathlib import Path
 import toml
 import os

@@ -1,3 +1,9 @@
+"""
+ViaRAGHTTPClient: Handles all HTTP requests for the SDK.
+
+- Used internally by ViaRAGClient; you usually don't need to use this directly.
+- Provides get(), post(), and upload() methods for API communication.
+"""
 
 import requests
 from typing import Optional, List
