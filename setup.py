@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 
 setup(
     name="viarag-sdk",
-    version="0.2.0",
+    version="0.1.0",
     description="Python SDK for ViaRAG, a seamless RAG integration pipeline",
-    author="ViaVeritas",
-    author_email="team@viaveri.co",
-    url="https://github.com/ViaVeritas/ViaRAG_SDK",
+    author="ViaVeritas Technologies Corp",
+    author_email="info@viaveri.co",
+    url="https://github.com/ViaVeritas/ViaRAG",
     packages=find_packages(),
     install_requires=[
         "requests>=2.25.1",

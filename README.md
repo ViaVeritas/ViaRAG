@@ -30,10 +30,9 @@ pip install .
 from viarag.client.client import ViaRAGClient
 
 client = ViaRAGClient(
-    base_url="https://viarag-backend-prod-104241861537.us-central1.run.app",
+    base_url="your-base-URL",
     api_key="sk-your-key"
 )
-
 # Query
 print(client.query("What is ViaRAG?"))
 
