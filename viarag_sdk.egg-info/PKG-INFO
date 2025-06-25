@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: viarag-sdk
+Version: 0.2.0
+Summary: Python SDK for ViaRAG, a seamless RAG integration pipeline
+Home-page: https://github.com/ViaVeritas/ViaRAG_SDK
+Author: ViaVeritas
+Author-email: team@viaveri.co
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: requests>=2.25.1
+Requires-Dist: pydantic>=1.10.0
+Requires-Dist: toml>=0.10.2
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
