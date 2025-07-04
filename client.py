@@ -16,7 +16,7 @@ class ViaRAGClient:
             api_key: Bearer token for authentication
             timeout: Request timeout in seconds
         """
-        self.api_url = "http://127.0.0.1:8000"#.rstrip("/")
+        self.api_url = "https://viarag-backend-prod-104241861537.us-central1.run.app"
         self.api_key = api_key
         self.timeout = timeout
         self.headers = {"Authorization": f"Bearer {self.api_key}"}
