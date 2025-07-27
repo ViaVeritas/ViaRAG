@@ -16,7 +16,7 @@ class ViaRAGClient:
             api_key: Bearer token for authentication
             timeout: Request timeout in seconds
         """
-        self.api_url = "https://viarag-backend-prod-104241861537.us-central1.run.app"
+        self.api_url = "https://api.viarag.ai"
         self.api_key = api_key
         self.timeout = timeout
         self.headers = {"Authorization": f"Bearer {self.api_key}"}
@@ -25,7 +25,7 @@ class ViaRAGClient:
         """
         Returns API health status.
         """
-        url = f"{self.api_url}/api/v1/simple/health"
+        url = f"{self.api_url}/health"
         resp = requests.get(url, timeout=self.timeout)
         resp.raise_for_status()
         return resp.json()
@@ -141,5 +141,45 @@ class ViaRAGClient:
         url = f"{self.api_url}/api/v1/advanced/delete/delete/by-doc-id"
         payload = {"doc_id": doc_id}
         resp = requests.post(url, headers=self.headers, json=payload, timeout=self.timeout)
+        resp.raise_for_status()
+        return resp.json()
+
+    def embed_text(
+        self,
+        text: str,
+        metadata: Optional[Dict[str, Any]] = None,
+        chunking_config: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Embeds raw text and stores it in the vector store.
+        """
+        url = f"{self.api_url}/api/v1/simple/embed_text"
+        payload: Dict[str, Any] = {"text": text}
+        if metadata is not None:
+            payload["metadata"] = metadata
+        if chunking_config is not None:
+            payload["chunking_config"] = chunking_config
+        resp = requests.post(url, headers=self.headers, json=payload, timeout=self.timeout)
+        resp.raise_for_status()
+        return resp.json()
+
+    def upload_docs_from_json(
+        self,
+        file_path: str,
+        metadata: Optional[Dict[str, Any]] = None,
+        chunking_config: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Uploads a JSON file containing page_content fields for vector storage.
+        """
+        url = f"{self.api_url}/api/v1/advanced/upload/docs_from_json"
+        data: Dict[str, Any] = {}
+        if metadata is not None:
+            data["metadata"] = json.dumps(metadata)
+        if chunking_config is not None:
+            data["chunking_config"] = json.dumps(chunking_config)
+        with open(file_path, "rb") as f:
+            files = {"file": (Path(file_path).name, f)}
+            resp = requests.post(url, headers=self.headers, files=files, data=data, timeout=self.timeout)
         resp.raise_for_status()
         return resp.json()
