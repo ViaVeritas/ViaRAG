@@ -60,6 +60,20 @@ class ViaRAGClient:
         resp.raise_for_status()
         return resp.json()
 
+    def match_context_with_filters(self, prompt: str, top_k: int = 5, metadata_filter: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        """
+        Retrieves top-k matching context chunks using metadata filters.
+        """
+        url = f"{self.api_url}/api/v1/advanced/query/match_with_filters"
+        payload = {
+            "prompt": prompt,
+            "top_k": top_k,
+            "metadata_filter": metadata_filter or {}
+        }
+        resp = requests.post(url, json=payload, headers=self.headers, timeout=self.timeout)
+        resp.raise_for_status()
+        return resp.json()
+
     def upload_document(
         self,
         file_path: str,
